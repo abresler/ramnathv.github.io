@@ -53,10 +53,13 @@
           <span class="post-date">{{{ page.date }}}</span>
           {{{ page.content }}}
         </div>
+        {{# page.disqus }}
+        {{> disqus }}
+        {{/ page.disqus }}
       </div>
       <!-- <a href="#" class="back-to-top">Back to Top</a> -->
     </div>
-
+  
   {{> gauges }}
   </body>
   <!-- Load Javascripts for Widgets -->
