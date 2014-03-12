@@ -2,6 +2,7 @@
 title: Verbatim Chunks in R Markdown
 date: "2014-03-12"
 config: "../config.yml"
+card: True
 description: >
   This is a short post on how to print knitr code chunks verbatim, preserving all the markup along with chunk options. It extends an idea posted by Yihui in his knitr-examples repo. 
 --- &article2

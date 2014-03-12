@@ -2,6 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
   {{> head }}
+  {{# page.card }}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="http://ramnathv.github.io">
+  <meta name="twitter:title" content="{{{ page.title }}}">
+  <meta name="twitter:description" content="{{{ page.description }}}">
+  <meta name="twitter:image" content="http://ramnathv.github.io/images/ramnath.jpg">
+  <meta name="twitter:site" content="@ramnath_vaidya">
+  <meta name="twitter:creator" content="@ramnath_vaidya">
+  {{/ page.card }}
 
   <body class='theme-base-{{ site.theme }} {{# site.reverse }}layout-reverse{{/ site.reverse}}'>
 
