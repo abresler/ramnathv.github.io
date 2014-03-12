@@ -1,6 +1,6 @@
 ---
 title: Verbatim Chunks in R Markdown
-date: "2014-02-14"
+date: "2014-03-12"
 config: "../config.yml"
 description: >
   This is a short post on how to print knitr code chunks verbatim, preserving all the markup along with chunk options. It extends an idea posted by Yihui in his knitr-examples repo. 
@@ -10,7 +10,7 @@ description: >
 
 
 
-.message [RMarkdown]() has truly revolutinized the way I write. The simplicity of [markdown]() and the extreme flexibility of [knitr]() allows me to combine text and code in ways I would never have been able to do before.
+.message [RMarkdown](https://www.rstudio.com/ide/docs/r_markdown) has truly revolutinized the way I write. The simplicity of [markdown](http://daringfireball.net/projects/markdown/) and the extreme flexibility of [knitr](http://github.com/yihui/knitr) allows me to combine text and code in ways I would never have been able to do before.
 
 One of the things I have always wanted to do is to be able to print code chunks verbatim, along with the chunk markup. This is especially useful while writing tutorials, where I want the user to see the code chunk "asis". 
 

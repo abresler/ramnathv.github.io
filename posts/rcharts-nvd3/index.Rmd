@@ -4,7 +4,7 @@ date: "2014-01-14"
 config: "../config.yml"
 hitheme: solarized_dark
 description: >
- This is a short description of my post
+ This is a short tutorial on using NVD3 with rCharts to create interactive visualizations.
 --- &article2
 
 .message This is a demo of using [NVD3](http://nvd3.org) with [rCharts](http://rcharts.io). It requires installation of rCharts >= 0.4.2.

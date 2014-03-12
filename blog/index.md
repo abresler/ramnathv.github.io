@@ -11,14 +11,12 @@ url: {lib: ../libraries}
   <div class="posts">
     {{# pages }}{{# date }}
     <div class="post">
-      <span class="post-date">{{ date }}</span>
       <h3 class="post-title">
       <a href="../{{ link }}">
         {{ title }}
       </a>
       </h3>
-
-      
+      <span class="post-date">{{ date }}</span>    
       {{ description }}
     </div>
     {{/ date }}{{/ pages }}
