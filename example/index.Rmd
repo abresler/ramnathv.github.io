@@ -1,0 +1,29 @@
+---
+title: Slidify
+author: Ramnath Vaidyanathan
+framework: revealjs
+onefile: False
+widgets: [polycharts]
+url: {lib: ../libraries}
+mode: selfcontained
+---
+
+## Slide 1
+
+Some contents
+
+--- {class: class1, bg: yellow, id: id1}
+    
+## Slide 2
+
+Slide Contents
+
+---
+
+```{r results = 'asis', comment = NA, message = F}
+library(rCharts)
+r1 <- rPlot(mpg ~ wt, data = mtcars, type = 'point')
+r1$show('inline')
+```
+
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+        Verbatim Chunks in R Markdown &middot; Addicted to R
+      </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../libraries/frameworks/lanyon/public/css/poole.css">
+    <link rel="stylesheet" href="../../libraries/frameworks/lanyon/public/css/syntax.css">
+    <link rel="stylesheet" href="../../libraries/frameworks/lanyon/public/css/lanyon.css">
+    <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/solarized_light.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+    <!-- <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Gentium+Book+Basic|Lato:400' type='text/css'> -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="../../libraries/frameworks/lanyon/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <!-- Source: http://developerdrive.developerdrive.netdna-cdn.com/wp-content/uploads/2013/07/scroll-to-top.html 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  
+    <style>
+  	.back-to-top {
+  		position: fixed;
+  		bottom: 2em;
+  		right: 5px;
+  		text-decoration: none;
+  		color: #000000;
+  		background-color: rgba(235, 235, 235, 0.80);
+  		font-size: 12px;
+  		padding: 1em;
+  		display: none;
+  	}
+  
+  	.back-to-top:hover {	
+  		background-color: rgba(135, 135, 135, 0.50);
+  	}	
+  	</style>
+    -->
+  </head>  <body class='theme-base-09 layout-reverse'>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+         styles, `#sidebar-checkbox` for behavior. -->
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+    
+    <!-- Toggleable sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-item">
+        <p>I am a professor of operations management, addicted to R and data visualization.
+</p>
+      </div>
+    
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item active" href="/">
+          <i class='fa fa-home'> </i>  Home
+        </a>
+        <!-- <a class="sidebar-nav-item" href="/archive/v.zip">
+          <i class='fa fa-download'> </i>  Download
+        </a> -->
+        <a class="sidebar-nav-item" href="/research">
+      <i class='fa fa-cogs'> </i>  Research
+    </a>
+    <a class="sidebar-nav-item" href="/publications">
+      <i class='fa fa-pencil-square'> </i>  Publications
+    </a>
+    <a class="sidebar-nav-item" href="/projects">
+      <i class='fa fa-puzzle-piece'> </i>  Projects
+    </a>
+    <a class="sidebar-nav-item" href="/software">
+      <i class='fa fa-code'> </i>  Software
+    </a>
+    <a class="sidebar-nav-item" href="/blog">
+      <i class='fa fa-archive'> </i>  Blog
+    </a>
+    <a class="sidebar-nav-item" href="">
+          <i class='fa fa-github'> </i> GitHub
+        </a>
+        <!-- <span class="sidebar-nav-item">Currently v</span> -->
+      </nav>
+    
+      <div class="sidebar-item">
+        <p>
+          &copy; 2014. All rights reserved.
+        </p>
+      </div>
+    </div>    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Addicted to R</a>
+            <small>academic/hacker</small>
+            <div style='float:right;'>
+            <a href="/blog">
+              <i class='fa fa-archive'> </i>
+            </a>
+            <a href="http://twitter.com/ramnath_vaidya">
+              <i class='fa fa-twitter'> </i>
+            </a>
+            <a href="http://github.com/ramnathv">
+              <i class='fa fa-github'> </i>
+            </a>
+            </div>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+          <span class="post-date">2014-02-14</span>
+          <h1 class="post-title">Verbatim Chunks in R Markdown</h1>
+          
+<p class='message'><a href="">RMarkdown</a> has truly revolutinized the way I write. The simplicity of <a href="">markdown</a> and the extreme flexibility of <a href="">knitr</a> allows me to combine text and code in ways I would never have been able to do before.</p>
+
+<p>One of the things I have always wanted to do is to be able to print code chunks verbatim, along with the chunk markup. This is especially useful while writing tutorials, where I want the user to see the code chunk &quot;asis&quot;. </p>
+
+<p>Initially, I thought that I could achieve this by indenting the code chunk, thereby &quot;fooling&quot; <a href="http://github.com/yihui/knitr">knitr</a> into believing that it is not a code chunk, and thereby printing it verbatim in a <code>&lt;code&gt;</code> block. But I was terribly mistaken. Apparently, <code>knitr</code> is too smart to be fooled, and no matter how deep you tuck away or indent the chunk, <code>knitr</code> always finds it and executes it!</p>
+
+<p>Digging a little deeper, I found an example from the author in his <a href="https://github.com/yihui/knitr-examples/blob/master/062-chunk-wrapper.Rmd">knitr-examples</a> repo. The basic idea was to write a <a href="yihui.name/knitr/hooks">chunk hook</a> that wraps the source code with the markup. It makes use of the option <code>params.src</code> that contains the chunk options that are set locally.</p>
+
+<pre><code class="r">knit_hooks$set(wrapper = function(before, options, envir) {
+  if (before) {
+    sprintf(&#39;    ```{r %s}\n&#39;, options$params.src)
+  } else &#39;    ```\n&#39;
+})
+</code></pre>
+
+<p>Let us test it out by adding <code>wrapper = TRUE</code> to a code chunk.</p>
+
+<pre><code>```{r test_label, wrapper=TRUE, eval=FALSE}
+</code></pre>
+
+<pre><code class="r">1+1
+plot(1)
+</code></pre>
+
+<pre><code>```
+</code></pre>
+
+<p>It works! Well, it almost works. I say almost, because I don&#39;t like how it splits the code and the chunk markup into different blocks. I am sure that I can clean this up using some regex-fu, but I wanted to explore a cleaner solution using hooks.</p>
+
+<p>After a lot of experimentation, I ended up with the following hook. Note that my implementation involves a source hook and not a chunk hook, like the one proposed by <a href="http://yihui.name">Yihui</a>. It is customized for <code>Rmd</code> documents, but is easy to extend for other formats like <code>Rnw</code>.</p>
+
+<pre><code class="r">knit_hooks$set(source = function(x, options){
+  if (!is.null(options$verbatim) &amp;&amp; options$verbatim){
+    opts = gsub(&quot;,\\s*verbatim\\s*=\\s*TRUE\\s*&quot;, &quot;&quot;, options$params.src)
+    bef = sprintf(&#39;\n\n    ```{r %s}\n&#39;, opts, &quot;\n&quot;)
+    stringr::str_c(
+      bef, 
+      knitr:::indent_block(paste(x, collapse = &#39;\n&#39;), &quot;    &quot;), 
+      &quot;\n    ```\n&quot;
+    )
+  } else {
+    stringr::str_c(&quot;\n\n```&quot;, tolower(options$engine), &quot;\n&quot;, 
+      paste(x, collapse = &#39;\n&#39;), &quot;\n```\n\n&quot;
+    )
+  }
+})
+</code></pre>
+
+<p>Let us now test how this hook performs.</p>
+
+<pre><code>```{r qplot, fig.width = 5, fig.height = 5, fig.align = &quot;center&quot;}
+library(ggplot2)
+qplot(wt, am, color = vs, data = mtcars)
+```
+</code></pre>
+
+<p><img src="assets/fig/qplot.png" title="plot of chunk qplot" alt="plot of chunk qplot" style="display: block; margin: auto;" /></p>
+
+<p>Yeyy! It works exactly like how I wanted it to. As always, this post is fully reproducible, and you can find the code <a href="index.Rmd">here</a>.</p>
+
+<style>
+pre {
+  padding: 0;
+}
+pre code {
+  padding: 1rem;
+}
+p {
+  text-align: justify;
+}
+</style>
+
+        </div>
+      </div>
+      <!-- <a href="#" class="back-to-top">Back to Top</a> -->
+    </div>
+
+  </body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

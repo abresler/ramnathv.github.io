@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  {{> head }}
+
+  <body class='theme-base-{{ site.theme }} {{# site.reverse }}layout-reverse{{/ site.reverse}}'>
+
+    {{> sidebar }}
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">{{{ site.title }}}</a>
+            <small>{{{ site.tagline }}}</small>
+            <div style='float:right;'>
+            <a href="/blog">
+              <i class='fa fa-archive'> </i>
+            </a>
+            <a href="http://twitter.com/ramnath_vaidya">
+              <i class='fa fa-twitter'> </i>
+            </a>
+            <a href="http://github.com/ramnathv">
+              <i class='fa fa-github'> </i>
+            </a>
+            </div>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        {{# page.image }}
+        <div class="image-wrap">
+          <img src="{{page.image}}" itemprop="primaryImageOfPage" 
+            style='height:340px;display:block;margin-left:auto;margin-right:auto;'>
+        </div><!-- /.image-wrap -->
+        {{/ page.image }}
+        <div class="post">
+          <span class="post-date">{{{ page.date }}}</span>
+          <h1 class="post-title">{{{ page.title }}}</h1>
+          {{{ page.content }}}
+        </div>
+      </div>
+      <!-- <a href="#" class="back-to-top">Back to Top</a> -->
+    </div>
+
+  </body>
+  <!-- Load Javascripts for Widgets -->
+  {{{ page.assets.js }}}
+  {{> javascripts }}
+</html>

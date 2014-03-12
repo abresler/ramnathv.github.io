@@ -1,0 +1,5 @@
+framework: lanyon
+mode: selfcontained
+hitheme: solarized_light
+url: {lib: ../../libraries}
+onefile: False

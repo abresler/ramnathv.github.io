@@ -1,0 +1,114 @@
+---
+title: NVD3 with rCharts
+date: "2014-01-14"
+config: "../config.yml"
+hitheme: solarized_dark
+description: >
+ This is a short description of my post
+--- &article2
+
+.message This is a demo of using [NVD3](http://nvd3.org) with [rCharts](http://rcharts.io). It requires installation of rCharts >= 0.4.2.
+
+
+Our first step is to load `rCharts` and set the appropriate options so that the charts are rendered as inline iframes. Note that you don't need these settings, if you are running the examples interactively in your R console.
+
+```{r setup, tidy = F, cache = F}
+library(rCharts)
+options(
+  rcharts.mode = 'iframesrc', 
+  rcharts.cdn = TRUE,
+  RCHART_WIDTH = 600,
+  RCHART_HEIGHT = 400
+)
+library(knitr)
+opts_chunk$set(tidy = F, results = 'asis', comment = NA)
+```
+
+## Stacked Area Chart
+
+```{r results = 'asis', comment = NA}
+dat <- data.frame(
+  t = rep(0:23, each = 4), 
+  var = rep(LETTERS[1:4], 4), 
+  val = round(runif(4*24,0,50))
+)
+p8 <- nPlot(val ~ t, group =  'var', data = dat, 
+ type = 'stackedAreaChart', id = 'chart'
+)
+p8
+```
+
+## Scatter Chart
+
+```{r comment = NA, results = 'asis'}
+p1 <- nPlot(mpg ~ wt, group = 'cyl', data = mtcars, type = 'scatterChart')
+p1$xAxis(axisLabel = 'Weight (in lb)')
+p1
+```
+
+
+## Multibar Chart
+
+```{r results = 'asis', comment = NA}
+hair_eye = as.data.frame(HairEyeColor)
+p2 <- nPlot(Freq ~ Hair, group = 'Eye', 
+  data = subset(hair_eye, Sex == "Female"), 
+  type = 'multiBarChart'
+)
+p2$chart(color = c('brown', 'blue', '#594c26', 'green'))
+p2
+```
+
+## Multibar Chart with Controls
+
+```{r results = 'asis', comment = NA}
+hair_eye = as.data.frame(HairEyeColor)
+p2a <- nPlot(Freq ~ Hair, group = 'Eye', 
+  data = hair_eye,
+  type = 'multiBarChart'
+)
+p2a$chart(color = c('brown', 'blue', '#594c26', 'green'))
+p2a$addFilters("Sex")
+p2a$set(dom = 'chart2', width = 600)
+p2a
+```
+
+<style>#iframe-chart2{height: 700px;}</style>
+
+
+## Multibar Horizontal Chart
+
+```{r results = 'asis', comment = NA}
+p3 <- nPlot(~ cyl, group = 'gear', data = mtcars, type = 'multiBarHorizontalChart')
+p3$chart(showControls = F)
+p3
+```
+
+## Pie Chart
+
+```{r results = 'asis', comment = NA}
+p4 <- nPlot(~ cyl, data = mtcars, type = 'pieChart')
+p4
+```
+
+## Donut Chart
+
+```{r results = 'asis', comment = NA}
+p5 <- nPlot(~ cyl, data = mtcars, type = 'pieChart')
+p5$chart(donut = TRUE)
+p5
+```
+
+## Line Chart
+
+```{r results = 'asis', comment = NA}
+data(economics, package = 'ggplot2')
+p6 <- nPlot(uempmed ~ date, data = economics, type = 'lineChart')
+p6
+```
+
+
+<style>
+  pre {padding: 0;}
+  pre code {padding: 1rem;}
+</style>

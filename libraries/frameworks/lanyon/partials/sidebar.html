@@ -1,0 +1,34 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>{{ site.description }}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item active" href="/">
+      <i class='fa fa-home'> </i>  Home
+    </a>
+    <!-- <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">
+      <i class='fa fa-download'> </i>  Download
+    </a> -->
+    {{# site.sidebar }}
+    <a class="sidebar-nav-item" href="{{ href }}">
+      <i class='fa fa-{{ icon }}'> </i>  {{ item }}
+    </a>
+    {{/ site.sidebar }}
+    <a class="sidebar-nav-item" href="{{ site.github.repo }}">
+      <i class='fa fa-github'> </i> GitHub
+    </a>
+    <!-- <span class="sidebar-nav-item">Currently v{{ site.version }}</span> -->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. All rights reserved.
+    </p>
+  </div>
+</div>

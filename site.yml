@@ -1,0 +1,40 @@
+title: Addicted to R
+tagline: "academic/hacker"
+theme: "09"
+reverse: True
+description: >
+  I am a professor of operations management, addicted to R and data visualization.
+
+sidebar:
+  - {item: Research, href: '/research', icon: 'cogs'}
+  - {item: Publications, href: '/publications', icon: 'pencil-square'}
+  - {item: Projects, href: '/projects', icon: 'puzzle-piece'}
+  - {item: Software, href: '/software', icon: 'code'}
+  - {item: Blog, href: '/blog', icon: 'archive'}
+
+
+projects:
+  - {title: "Visualizing Bike Sharing Networks", 
+     url: "http://slidify.github.io/dcmeetup/demo/bikeshare",
+     thumbnail: 'citibikes.png'
+    }
+  - {title: "Animated Choropleths",
+     url: "http://rmaps.github.io/blog/posts/animated-choropleths/index.html",
+     thumbnail: "animated-choropleths.png"
+    }
+  - {title: Visualizing Medal Tally at Sochi,
+  	 url: "http://ramnathv.ocpu.io/sochi/www/",
+  	 thumbnail: "sochi.png"
+  	}
+  - {title: Online Playground for rCharts,
+     url: "http://rcharts.io/playground",
+     thumbnail: "rcharts.png"
+    }
+  - {title: 100 Centuries of Sachin Tendulkar,
+  	 url: 'http://ramnathv.github.io/sachin100s/',
+  	 thumbnail: 'sachin.png'
+    }
+  - {title: Interactive Controls with rCharts,
+     url: 'http://rcharts.io/icontrols',
+     thumbnail: 'icontrols.png'
+    }
