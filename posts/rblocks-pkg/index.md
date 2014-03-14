@@ -30,20 +30,6 @@ Let us start by creating different data structures and visualizing them. I refac
 
 ```r
 library(rblocks)
-```
-
-```
-## 
-## Attaching package: 'rblocks'
-## 
-## The following objects are masked _by_ '.GlobalEnv':
-## 
-##     as.block, block_grid, block_to_json, block_to_json.data.frame,
-##     block_to_json.matrix, display, hook_crop_png, print_raw,
-##     print.block
-```
-
-```r
 b_dataframe <- make_block(5, 5, type = "data.frame")
 b_dataframe
 b_matrix <- make_block(5, 5, type = "matrix")
@@ -93,7 +79,7 @@ assets/fig/unnamed-chunk-4.html
 ' scrolling='no' seamless
 class='rChart d3block '
 id=iframe-
-chart8c8d71ac7019
+chart8ec9406f5c34
 ></iframe>
 <style>iframe.rChart{ width: 100%; height: 400px;}</style>
 
@@ -110,7 +96,7 @@ assets/fig/unnamed-chunk-5.html
 ' scrolling='no' seamless
 class='rChart d3block '
 id=iframe-
-chart8c8d3bb98443
+chart8ec94f0e7af8
 ></iframe>
 <style>iframe.rChart{ width: 100%; height: 400px;}</style>
 
