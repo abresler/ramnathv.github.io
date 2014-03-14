@@ -5,6 +5,12 @@ reverse: False
 description: >
   I am a professor of operations management, addicted to R and data visualization.
 
+url: "http://ramnathv.github.io/"
+author:
+  name: "Ramnath Vaidyanathan"
+  github: "ramnathv"
+  twitter: "ramnath_vaidya"
+
 sidebar:
   - {item: Research, href: '/research', icon: 'cogs'}
   - {item: Publications, href: '/publications', icon: 'pencil-square'}

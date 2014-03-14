@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="http://ramnathv.github.io">
+  <meta name="twitter:title" content="rblocks Package v 0.1">
+  <meta name="twitter:description" content="This is a revised post on rblocks, based on some excellent suggestions from Hadley Wickham, Paul Murell and others, on how to enrich the visual representation of data structures. I have also combined some `d3js` goodness, that you can see towards the end of the post! Read on, if this interests you!">
+  <meta name="twitter:image" content="http://ramnathv.github.io/images/ramnath.jpg">
+  <meta name="twitter:site" content="@ramnath_vaidya">
+  <meta name="twitter:creator" content="@ramnath_vaidya">
+  
+  <head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+        rblocks Package v 0.1 &middot; Addicted to R
+      </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../libraries/frameworks/lanyon/public/css/poole.css">
+    <link rel="stylesheet" href="../../libraries/frameworks/lanyon/public/css/syntax.css">
+    <link rel="stylesheet" href="../../libraries/frameworks/lanyon/public/css/lanyon.css">
+    <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/solarized_light.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+    <!-- <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Gentium+Book+Basic|Lato:400' type='text/css'> -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="../../libraries/frameworks/lanyon/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <!-- Source: http://developerdrive.developerdrive.netdna-cdn.com/wp-content/uploads/2013/07/scroll-to-top.html 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  
+    <style>
+  	.back-to-top {
+  		position: fixed;
+  		bottom: 2em;
+  		right: 5px;
+  		text-decoration: none;
+  		color: #000000;
+  		background-color: rgba(235, 235, 235, 0.80);
+  		font-size: 12px;
+  		padding: 1em;
+  		display: none;
+  	}
+  
+  	.back-to-top:hover {	
+  		background-color: rgba(135, 135, 135, 0.50);
+  	}	
+  	</style>
+    -->
+  </head>  
+  
+
+  <body class='theme-base-09 '>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+         styles, `#sidebar-checkbox` for behavior. -->
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+    
+    <!-- Toggleable sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-item">
+        <p>I am a professor of operations management, addicted to R and data visualization.
+</p>
+      </div>
+    
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item active" href="/">
+          <i class='fa fa-home'> </i>  Home
+        </a>
+        <!-- <a class="sidebar-nav-item" href="/archive/v.zip">
+          <i class='fa fa-download'> </i>  Download
+        </a> -->
+        <a class="sidebar-nav-item" href="/research">
+      <i class='fa fa-cogs'> </i>  Research
+    </a>
+    <a class="sidebar-nav-item" href="/publications">
+      <i class='fa fa-pencil-square'> </i>  Publications
+    </a>
+    <a class="sidebar-nav-item" href="/projects">
+      <i class='fa fa-puzzle-piece'> </i>  Projects
+    </a>
+    <a class="sidebar-nav-item" href="/software">
+      <i class='fa fa-code'> </i>  Software
+    </a>
+    <a class="sidebar-nav-item" href="/blog">
+      <i class='fa fa-archive'> </i>  Blog
+    </a>
+    <a class="sidebar-nav-item" href="">
+          <i class='fa fa-github'> </i> GitHub
+        </a>
+        <!-- <span class="sidebar-nav-item">Currently v</span> -->
+      </nav>
+    
+      <div class="sidebar-item">
+        <p>
+          &copy; 2014. All rights reserved.
+        </p>
+      </div>
+    </div>    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Addicted to R</a>
+            <small>academic/hacker</small>
+            <div style='float:right;'>
+            <a href="/blog">
+              <i class='fa fa-archive'> </i>
+            </a>
+            <a href="http://twitter.com/ramnath_vaidya">
+              <i class='fa fa-twitter'> </i>
+            </a>
+            <a href="http://github.com/ramnathv">
+              <i class='fa fa-github'> </i>
+            </a>
+            </div>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+          <h1 class="post-title">rblocks Package v 0.1</h1>
+          <span class="post-date">2014-03-14</span>
+          
+<p class='message'><a href="http://github.com/ramnathv/rblocks">rblocks</a> is an R package that provides a fun and visual tool to explore data structures and control flow in R. It is a port of <a href="http://ipythonblocks.org">ipythonblocks</a>. </p>
+
+<p>From the time I blogged about <a href="../rblocks">rblocks</a>, there have been some excellent suggestions from the community, <a href="http://had.co.nz">Hadley Wickham</a> and <a href="https://www.stat.auckland.ac.nz/%7Epaul/">Paul Murrell</a> in particular. One of the major points made was that R has several data structures and it would help to be able to distinguish between these. </p>
+
+<p>While I was scratching my head on how I could represent them in visually distinct ways, Hadley pointed me to this <a href="https://www.stat.auckland.ac.nz/%7Epaul/ItDT/HTML/node64.html#SECTION001340200000000000000">excellent resource</a> from Paul Murrell, where he had already presented an elegant visual representation of the different structures.</p>
+
+<p>Armed with this knowledge, I refactored my code, and bundled it into a package. The API is still highly fluid, but if you want to play with it, please use <code>devtools</code> and install from <code>github</code>.</p>
+
+<pre><code class="r">devtools::install_github(&#39;rblocks&#39;, &#39;ramnathv&#39;)
+</code></pre>
+
+<h3>Basics</h3>
+
+<p>Let us start by creating different data structures and visualizing them. I refactored <code>block_grid</code> into a <code>make_block</code> function, which accepts either dimensions and type of data structure as inputs, or an actual data object, which then gets converted into a block object.</p>
+
+<pre><code class="r">library(rblocks)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;rblocks&#39;
+## 
+## The following objects are masked _by_ &#39;.GlobalEnv&#39;:
+## 
+##     as.block, block_grid, block_to_json, block_to_json.data.frame,
+##     block_to_json.matrix, display, hook_crop_png, print_raw,
+##     print.block
+</code></pre>
+
+<pre><code class="r">b_dataframe &lt;- make_block(5, 5, type = &quot;data.frame&quot;)
+b_dataframe
+b_matrix &lt;- make_block(5, 5, type = &quot;matrix&quot;)
+b_matrix
+b_list &lt;- make_block(list(x = 1:2, y = LETTERS[1:4], z = c(T, F)))
+b_list
+b_vector &lt;- make_block(5, type = &quot;vector&quot;)
+b_vector
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display:inline" /><img src="assets/fig/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display:inline" /><img src="assets/fig/unnamed-chunk-13.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display:inline" /><img src="assets/fig/unnamed-chunk-14.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display:inline" /></p>
+
+<p>This representation has the advantage of distinguishing between data structures. This allows us to explore some subtleties in indexing in R. For example, the difference between the <code>[[</code> and <code>[</code> operator for lists can quite confusing to a beginner, and can be explained using the following example.</p>
+
+<pre><code class="r">display(b_list[[1]])
+display(b_list[1])
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-21.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display:inline" /><img src="assets/fig/unnamed-chunk-22.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display:inline" /></p>
+
+<p>Another subtlety, it lets us explore is how some indexing operators coerce data structures. For eample, consider the difference between the following statements.</p>
+
+<pre><code class="r">display(b_dataframe[1])
+display(b_dataframe[, 1])
+display(b_dataframe[, 1, drop = FALSE])
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-31.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display:inline" /><img src="assets/fig/unnamed-chunk-32.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display:inline" /><img src="assets/fig/unnamed-chunk-33.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display:inline" /></p>
+
+<p>Given my passion for interactive data visualizations, I have also started a <code>d3</code> backend to visualize these data structures (thanks to <a href="http://bl.ocks.org/Caged/6476579">http://bl.ocks.org/Caged/6476579</a>, I just had to tweak some d3 code!). It requires installation of my <a href="http://rcharts.io">rCharts</a> package currently. Hover on top of the cells and you will see that the coordinates show up in a tooltip. I suspect, that the d3 representation will allow us to do more powerful stuff, although my ideas on what to do with this, are currently limited.</p>
+
+<pre><code class="r">library(rCharts)
+display_d3(b_dataframe)
+</code></pre>
+
+<iframe src='
+assets/fig/unnamed-chunk-4.html
+' scrolling='no' seamless
+class='rChart d3block '
+id=iframe-
+chart8c8d71ac7019
+></iframe>
+
+<style>iframe.rChart{ width: 100%; height: 400px;}</style>
+
+<pre><code class="r">b_dataframe2 = b_dataframe
+b_dataframe2[1] &lt;- &quot;red&quot;
+display_d3(b_dataframe2)
+</code></pre>
+
+<iframe src='
+assets/fig/unnamed-chunk-5.html
+' scrolling='no' seamless
+class='rChart d3block '
+id=iframe-
+chart8c8d3bb98443
+></iframe>
+
+<style>iframe.rChart{ width: 100%; height: 400px;}</style>
+
+<p>This package is still in very initial stages. The API is far from stable, and I am sure there are lots of bugs. One reason for posting this package at such an initial stage is that I strongly believe a package of this kind can benefit significantly from feedback and contributions at an early stage.</p>
+
+<p>Working on this package has been fun as it falls at the intersection of my passions: R, teaching and data visualization. Moreover, it has helped me improve my own understanding of the idiosyncracies of indexing in R.</p>
+
+<style>
+ p{text-align: justify;}
+ iframe.rChart{height: 220px;}
+</style>
+
+        </div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ramnathv'; // required: replace example with your forum shortname
+        
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>        
+      </div>
+      <!-- <a href="#" class="back-to-top">Back to Top</a> -->
+    </div>
+  
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function() {
+      var t   = document.createElement('script');
+      t.type  = 'text/javascript';
+      t.async = true;
+      t.id    = 'gauges-tracker';
+      t.setAttribute('data-site-id', '53207fc1e32bb4498d004943');
+      t.src = '//secure.gaug.es/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>  </body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

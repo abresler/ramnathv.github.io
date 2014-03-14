@@ -20,11 +20,25 @@ block_grid = function(nrow, ncol = nrow, type = 'data.frame', fill = "#7BEA7B"){
   as.block(blk)
 }
 
+block_list = function(x){
+  
+}
+
 #' Display a block grid
 #' 
 #' The implementation here is borrowed from sna::plot.sociomatrix
 display = function(block){
-  if (length(dim(block)) < 2){
+  gap = 0.5
+  if (!is.atomic(block) && is.null(dim(block))){
+    maxLen = max(sapply(block, length)) 
+    data = as.data.frame(matrix('white', maxLen, length(block)))
+    for (i in seq_along(block)){
+      data[i] <- c(
+        rep("#7BEA7B", length(block[[i]])),
+        rep('white', maxLen - length(block[[i]]))
+      )
+    }
+  } else if (length(dim(block)) < 2){
     data = matrix('white', length(block) - 1, length(block))
     data[1,] = block
   } else {
@@ -38,9 +52,16 @@ display = function(block){
   plot(1, 1, xlim = c(0, o + 1), ylim = c(n + 1, 0), type = "n",
     axes = FALSE, xlab = "", ylab = ""
   )
+  if (is.data.frame(data)){
+    segments(1, 0, o, 0, col = 'darkgray')
+    # points(1:n, rep(0, o), pch = 16)
+    text(1:o, rep(0, o), labels = names(data), font = 2)
+    segments(1:o, 0.1, 1:o, 0.5, col = 'darkgray')
+    gap = 0.4
+  }
   for (i in 1:n){
     for (j in 1:o) {
-      rect(j - 0.5, i + 0.5, j + 0.5, i - 0.5, 
+      rect(j - gap, i + 0.5, j + gap, i - 0.5, 
          col = data[i, j], xpd = TRUE, border = 'white'
       )
     }
@@ -91,3 +112,54 @@ hook_crop_png = function(before, options, envir){
   })
   return()
 }
+
+block_list <- function(inputList, fill = "#7BEA7B"){ 
+  # Use fill = NULL for regular recycling behavior 
+  maxLen = max(sapply(inputList, length)) 
+  for(i in seq_along(inputList)) 
+    # inputList[[i]] <- c(inputList[[i]], rep(fill, maxLen - length(inputList[[i]]))) 
+    inputList[[i]] <- c(
+      rep(fill, length(inputList[[i]])),
+      rep('white', maxLen - length(inputList[[i]]))
+    )
+  as.block(as.data.frame(inputList, stringsAsFactors = F))
+} 
+
+# y <- as.block(list(h = c(1, 2), m = 1:6))
+# 
+# dat <- block_grid(10, 10)
+# 
+# dat <- matrix("#7BEA7B", 10, 10)
+# block_to_json(dat)
+# 
+block_to_json = function(x){
+  UseMethod("block_to_json")
+}
+
+block_to_json.matrix <- function(x){
+  dat = vector('list', NROW(x)*NCOL(x))
+  m = 1
+  for (j in 1:NCOL(x)){
+    for (i in 1:NROW(x)){
+      dat[[m]] <- list(i, j, x[i, j])
+      m <- m + 1
+    }
+  }
+  return(dat)
+}
+
+block_to_json.data.frame <- function(x){
+  dat = vector('list', NROW(x)*NCOL(x))
+  m = 1
+  for (j in 1:NCOL(x)){
+    for (i in 1:NROW(x)){
+      dat[[m]] <- list(i, j, x[i, j])
+      m <- m + 1
+    }
+  }
+  return(dat)
+}
+
+
+
+

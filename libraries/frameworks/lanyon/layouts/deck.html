@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  {{> head }}
   {{# page.card }}
   <meta name="twitter:card" content="summary">
   <meta name="twitter:url" content="http://ramnathv.github.io">
@@ -11,6 +10,10 @@
   <meta name="twitter:site" content="@ramnath_vaidya">
   <meta name="twitter:creator" content="@ramnath_vaidya">
   {{/ page.card }}
+  
+  {{> head }}
+  
+  {{{ page.assets.jshead }}}
 
   <body class='theme-base-{{ site.theme }} {{# site.reverse }}layout-reverse{{/ site.reverse}}'>
 
