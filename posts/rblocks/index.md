@@ -20,6 +20,8 @@ description: >
 <img src="assets/fig/apply-df.png" title="plot of chunk matrix-df" alt="plot of chunk matrix-df" style="display:inline" width=170px />
 </div>
 
+__NOTE: I have update `rblocks` since I posted this and have now bundled it into a package that can be installed from github. Read [here](../rblocks-pkg) for more details__
+
 One of the challenges associated with learning any programming language is being able to access and manipulate data structures. I have often heard from students that they find it hard to understand the different ways of slicing and dicing data in R. 
 
 As I researched different solutions to teach these concepts more effectively, I chanced upon the wonderful world of [ipythonblocks](http://nbviewer.ipython.org/github/jiffyclub/ipythonblocks/blob/master/demos/ipythonblocks_demo.ipynb). Here is a brief description of the tool by its creator [Matt Davis](http://penandpants.com/).
