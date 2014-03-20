@@ -5,7 +5,7 @@ config: "../config.yml"
 card: True
 disqus: True
 description: >
-  'In this post, I will show you how to create interactive playgrounds for R packages using AngularJS and OpenCPU. I will use the live playground application that I created for rCharts to illustrate the basic idea, which can easily be extended to other packages.'
+  In this post, I will show you how to create interactive playgrounds for R packages using AngularJS and OpenCPU. I will use the live playground application that I created for rCharts to illustrate the basic idea, which can easily be extended to other packages.
 assets:
   jshead:
     - "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
