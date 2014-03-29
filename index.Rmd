@@ -10,9 +10,9 @@ mode: selfcontained
   <img src="images/ramnath.png" alt="Ramnath Vaidyanathan" title="Ramnath Vaidyanathan" width="125px"/>
 </div>
 
-.lead I am an Assistant Professor of Operations Management in the [Desautels Faculty of Management]() at [McGill University](). My research primarily focuses on the application of predictive analytics and optimization methodologies to improve operational decisions in retailing. I got my PhD in Operations Management from the [Wharton School](), and worked at [McKinsey and Company]() prior to that.
+.lead I am an Assistant Professor of Operations Management in the [Desautels Faculty of Management](http://www.mcgill.ca/desautels/) at [McGill University](http://www.mcgill.ca). My research primarily focuses on the application of predictive analytics and optimization methodologies to improve operational decisions in retailing. I got my PhD in Operations Management from the [Wharton School](http://www.wharton.upenn.edu/), and worked at [McKinsey and Company](http://www.mckinsey.com/) prior to that.
 
-.lead I am addicted to R and Javascript and have developed two R packages,  [rCharts](http://rcharts.io) and [Slidify](http://slidify.github.io), aimed at simplifying the process of creating interactive visualizations and web-friendly documents, straight from R. I am writing a book on [Interactive Documents with R]().
+.lead I am addicted to R and Javascript and have developed two R packages,  [rCharts](http://rcharts.io) and [Slidify](http://slidify.github.io), aimed at simplifying the process of creating interactive visualizations and web-friendly documents, straight from R. I am writing a book on Interactive Documents with R
 
 
 <style>
